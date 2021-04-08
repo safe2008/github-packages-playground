@@ -6,13 +6,18 @@ import sbt.Keys._
 // organization := "safe2008"
 
 // configs for sbt-github-packages plugin
-// githubOwner := "safe2008"
-// githubRepository := "sbt-github-package-demo"
+githubOwner := "safe2008"
+githubRepository := "sbt-github-package-demo"
+githubTokenSource := TokenSource.Or(TokenSource.Environment("GITHUB_TOKEN"), TokenSource.GitConfig("github.token"))
+resolvers += Resolver.githubPackages("safe2008", "sbt-github-package-demo")
 
-
-githubTokenSource in ThisBuild := TokenSource.GitConfig("github.token") || TokenSource.Environment("GITHUB_USERTOKEN") || TokenSource.Environment("GITHUB_TOKEN")
-resolvers in ThisBuild  += Resolver.githubPackages("safe2008", "sbt-github-package-demo")
-// resolvers in ThisBuild += "GitHub Apache Maven Packages" at "https://maven.pkg.github.com/safe2008/"
+credentials +=
+  Credentials(
+    "GitHub Package Registry",
+    "maven.pkg.github.com",
+    "safe2008",
+    sys.env.getOrElse("GITHUB_TOKEN", "N/A")
+  )
 
 val projectNamespace = "safe2008"
 val projectName = "github-packages-playground"
@@ -29,8 +34,8 @@ lazy val root = (project in file("."))
     commonSettings,
     name := projectName,
     libraryDependencies ++= Seq(
-      "org.scalatest"   %%  "scalatest"       %   "3.2.0",
-      "safe2008"        %%  "calculator"      %   "0.1.5"
+      "org.scalatest"           %%  "scalatest"           %   "3.2.0",
+      "safe2008"                %%  "calculator"          %   "0.1.5"
 
     )
   )
