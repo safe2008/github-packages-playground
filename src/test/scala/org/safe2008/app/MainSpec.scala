@@ -1,5 +1,6 @@
 package org.safe2008.app
 
+import org.safe2008.lib.Calculator
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
