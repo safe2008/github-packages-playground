@@ -1,3 +1,5 @@
+package org.safe2008.app
+
 import org.safe2008.lib.Calculator
 
 object Main{
