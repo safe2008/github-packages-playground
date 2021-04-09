@@ -6,10 +6,10 @@ import sbt.Keys._
 // organization := "safe2008"
 
 // configs for sbt-github-packages plugin
-githubOwner := "safe2008"
-githubRepository := "sbt-github-package-demo"
+// githubOwner := "safe2008"
+// githubRepository := "sbt-github-package-demo"
 githubTokenSource := TokenSource.Or(TokenSource.Environment("GITHUB_TOKEN"), TokenSource.GitConfig("github.token"))
-resolvers += Resolver.githubPackages("safe2008", "sbt-github-package-demo")
+resolvers += Resolver.githubPackages("safe2008")
 
 credentials +=
   Credentials(
