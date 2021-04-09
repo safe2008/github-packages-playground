@@ -8,3 +8,4 @@ target/*
 .vscode*
 project/metals.sbt
 *.bloop*
+.bsp*
